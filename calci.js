@@ -50,10 +50,16 @@ function liveCalculate() {
 }
 
 // Live update on typing
-document.getElementById('input').addEventListener('input', liveCalculate);
+const inputElement = document.getElementById('input');
+if (inputElement) {
+  inputElement.addEventListener('input', liveCalculate);
+}
 
 // Keyboard support
 document.addEventListener('keydown', function(event) {
+  // Only handle keyboard events if input element exists
+  if (!document.getElementById('input')) return;
+  
   const key = event.key;
   
   // Number keys
@@ -108,5 +114,13 @@ document.addEventListener('keydown', function(event) {
   // Prevent default behavior for handled keys
   if (/^[0-9+\-*/.=()]$/.test(key) || key === 'Enter' || key === 'Escape' || key === 'Backspace') {
     event.preventDefault();
+  }
+});
+
+// Initialize calculator display
+document.addEventListener('DOMContentLoaded', function() {
+  const outputElement = document.getElementById('output');
+  if (outputElement) {
+    outputElement.textContent = '0';
   }
 });

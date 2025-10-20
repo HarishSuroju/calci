@@ -15,11 +15,18 @@ This project is ready to deploy to Vercel. Simply connect your GitHub repository
 
 ## Troubleshooting
 
-If CSS is missing after deployment:
+If you're seeing 404 errors or missing CSS/JS:
 1. Check that all files are committed and pushed to your repository
 2. Verify the `vercel.json` configuration is correct
-3. Ensure file names match the references in HTML files
+3. Ensure file paths in HTML files use relative paths (./file.ext)
 4. Try redeploying from Vercel dashboard with a fresh build
+5. Check browser console for specific error messages
+
+Common fixes:
+- Updated relative paths in HTML files to use ./ prefix
+- Updated Font Awesome CDN link to latest version
+- Added proper error handling in JavaScript
+- Enhanced Vercel configuration for all file types
 
 ## Files
 - `index.html` - Main entry point
